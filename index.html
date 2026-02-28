@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ochiba Emmanuel — Data Scientist & CS Student</title>
+    <title>Ochiba Emmanuel — Data Scientist</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -241,7 +241,9 @@
         /* For Animation */
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
       }
       .skill-tag i {
         color: #f39c12;
@@ -268,7 +270,9 @@
         /* For Animation */
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
       }
       .project-card:hover {
         transform: translateY(-8px) !important;
@@ -458,7 +462,7 @@
           <i class="fab fa-linkedin"></i> Connect on LinkedIn
         </a>
       </div>
-      <h1>Hello, I'm Ochiba.<br /><span>Data Scientist</span> & CS Student</h1>
+      <h1>Hello, I'm Ochiba.<br /><span>Data Scientist</span></h1>
       <p>
         Turning complex data into actionable business insights. Experienced in
         SQL, Python, and building impact-driven solutions.
@@ -664,7 +668,7 @@
               }
             });
           },
-          { threshold: 0.1 }
+          { threshold: 0.1 },
         );
 
         // Observe Projects and Skills
@@ -693,7 +697,7 @@
                   method: "POST",
                   body: formData,
                   headers: { Accept: "application/json" },
-                }
+                },
               );
 
               if (response.ok) {
