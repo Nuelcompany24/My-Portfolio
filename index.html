@@ -437,7 +437,63 @@
           padding: 4rem 5%;
         }
       }
+      .tableau-container {
+        width: 100%;
+        max-width: 1000px; /* Adjust based on your portfolio's max width */
+        height: 600px; /* Set a fixed height or use aspect-ratio */
+        margin: 0 auto; /* Centers the container */
+        overflow: hidden; /* Prevents it from spilling out */
+        position: relative;
+      }
+
+      /* Force the Tableau placeholder to respect the parent */
+      .tableauPlaceholder {
+        width: 100% !important;
+        height: 100% !important;
+      }
+      /* Add this to your existing styles */
+
+      #hero {
+        display: flex;
+        flex-direction: row; /* Puts children side-by-side */
+        align-items: center; /* Vertically centers them */
+        justify-content: space-between;
+        gap: 2rem; /* Adds space between the text and dashboard */
+        padding: 4rem 5%;
+      }
+
+      .hero-content {
+        flex: 1; /* Takes up equal space (left side) */
+        text-align: left; /* Aligns your text nicely */
+      }
+
+      .hero-visual {
+        flex: 1; /* Takes up equal space (right side) */
+        width: 100%;
+      }
+
+      /* Make it stack vertically on mobile screens */
+      @media (max-width: 768px) {
+        #hero {
+          flex-direction: column;
+          text-align: center;
+        }
+        .hero-content {
+          text-align: center;
+        }
+      }
     </style>
+
+    <script type="text/javascript">
+      var divElement = document.getElementById("viz1779992710983");
+      var vizElement = divElement.getElementsByTagName("object")[0];
+      vizElement.style.width = "100%";
+      vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
+      var scriptElement = document.createElement("script");
+      scriptElement.src =
+        "https://public.tableau.com/javascripts/api/viz_v1.js";
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
   </head>
   <body>
     <nav>
@@ -452,24 +508,82 @@
     </nav>
 
     <header id="hero">
-      <div class="profile-img-container">
-        <img src="profile.jpeg" alt="Ochiba Emmanuel" class="profile-img" />
-        <a
-          href="https://www.linkedin.com/in/nuel-ochiba-63b225395/"
-          target="_blank"
-          class="linkedin-badge"
-        >
-          <i class="fab fa-linkedin"></i> Connect on LinkedIn
-        </a>
+      <div class="hero-content">
+        <div class="profile-img-container">
+          <img src="profile.jpeg" alt="Ochiba Emmanuel" class="profile-img" />
+          <a
+            href="https://www.linkedin.com/in/nuel-ochiba-63b225395/"
+            target="_blank"
+            class="linkedin-badge"
+          >
+            <i class="fab fa-linkedin"></i> Connect on LinkedIn
+          </a>
+        </div>
+        <h1>Hello, I'm Emmanuel.<br /><span>Data Scientist</span></h1>
+        <p>
+          Motivated Data Analyst and Computer Science Education student with a
+          strong foundation in data management, analysis, and AI systems
+          training. Proficient in MySQL, PostgreSQL, and Python, with a 4th
+          place win at the Lagos Impact Hackathon 2025 demonstrating excellence
+          in cross-functional teamwork.
+        </p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
       </div>
-      <h1>Hello, I'm Ochiba.<br /><span>Data Scientist</span></h1>
-      <p>
-        Turning complex data into actionable business insights. Experienced in
-        SQL, Python, and building impact-driven solutions.
-      </p>
-      <div class="cta-buttons">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-outline">Contact Me</a>
+
+      <div class="hero-visual">
+        <div class="tableau-container">
+          <div
+            class="tableauPlaceholder"
+            id="viz1779992710983"
+            style="position: relative"
+          >
+            <noscript>
+              <a href="#">
+                <img
+                  alt="Sheet 1 "
+                  src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;Price_History&#47;Sheet1&#47;1_rss.png"
+                  style="border: none"
+                />
+              </a>
+            </noscript>
+            <object class="tableauViz" style="display: none">
+              <param
+                name="host_url"
+                value="https%3A%2F%2Fpublic.tableau.com%2F"
+              />
+              <param name="embed_code_version" value="3" />
+              <param name="site_root" value="" />
+              <param name="name" value="Price_History&#47;Sheet1" />
+              <param name="tabs" value="no" />
+              <param name="toolbar" value="yes" />
+              <param
+                name="static_image"
+                value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;Price_History&#47;Sheet1&#47;1.png"
+              />
+              <param name="animate_transition" value="yes" />
+              <param name="display_static_image" value="yes" />
+              <param name="display_spinner" value="yes" />
+              <param name="display_overlay" value="yes" />
+              <param name="display_count" value="yes" />
+              <param name="language" value="en-US" />
+              <param name="filter" value="publish=yes" />
+            </object>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          var divElement = document.getElementById("viz1779992710983");
+          var vizElement = divElement.getElementsByTagName("object")[0];
+          vizElement.style.width = "100%";
+          vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
+          var scriptElement = document.createElement("script");
+          scriptElement.src =
+            "https://public.tableau.com/javascripts/api/viz_v1.js";
+          vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
       </div>
     </header>
 
@@ -490,6 +604,12 @@
         <div class="skill-tag">
           <i class="fas fa-chart-bar"></i> Data Visualization
         </div>
+        <div class="skill-tag">
+          <i class="fab fa-laravel"></i> PHP & Laravel
+        </div>
+        <div class="skill-tag">
+          <i class="fab fa-react"></i> React & Node.js
+        </div>
       </div>
     </section>
 
@@ -499,41 +619,54 @@
         <div class="project-card">
           <div class="card-content">
             <div class="project-icon">
-              <i class="fas fa-microphone-alt"></i>
+              <i class="fas fa-shopping-cart"></i>
             </div>
-            <h3>Bi-Lingual AI Voice Assistant</h3>
+            <h3>Plushco E-Commerce</h3>
             <p>
-              Developed during the Lagos Impact Hackathon. An AI-powered
-              assistant featuring voice authentication.
+              A full-stack e-commerce platform for home interiors. Built on the
+              Laravel framework, featuring customized category layouts, secure
+              payment integrations, and Cloudflare optimization.
             </p>
             <div class="tech-stack">
-              <span class="tech-badge">Python</span
-              ><span class="tech-badge">AI/ML</span>
+              <span class="tech-badge">Laravel</span>
+              <span class="tech-badge">PHP</span>
+              <span class="tech-badge">CPanel</span>
+              <span class="tech-badge">SSL/TLS</span>
             </div>
             <div class="card-links">
-              <a href="https://github.com/Genius-mu/padi-hackathon"
-                >View Details <i class="fas fa-arrow-right"></i
-              ></a>
+              <a
+                href="https://plushco.com.ng"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Store <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
         </div>
 
         <div class="project-card">
           <div class="card-content">
-            <div class="project-icon"><i class="fas fa-store"></i></div>
-            <h3>AUL Marketplace Hub</h3>
+            <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Price History Analysis</h3>
             <p>
-              A student-focused laundry service platform concept designed for
-              Anchor University.
+              An interactive dashboard analyzing historical pricing trends and
+              fluctuations. Visualizes unit price changes over time to deliver
+              actionable business insights.
             </p>
             <div class="tech-stack">
-              <span class="tech-badge">Business Analysis</span
-              ><span class="tech-badge">Web Dev</span>
+              <span class="tech-badge">Tableau</span>
+              <span class="tech-badge">Data Analysis</span>
+              <span class="tech-badge">Data Visualization</span>
             </div>
             <div class="card-links">
-              <a href="https://aullaundryservice.com.ng/"
-                >View Details <i class="fas fa-arrow-right"></i
-              ></a>
+              <a
+                href="https://public.tableau.com/views/Price_History/Sheet1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Details <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -553,6 +686,8 @@
             <div class="card-links">
               <a
                 href="https://github.com/Nuelcompany24/Layoffs_data_cleaning_sql"
+                target="_blank"
+                rel="noopener noreferrer"
                 >View Details <i class="fas fa-arrow-right"></i
               ></a>
             </div>
@@ -616,7 +751,14 @@
           ><i class="fas fa-envelope"></i
         ></a>
       </div>
-      <p>© 2025 Ochiba Emmanuel • Department of Science Education</p>
+      <p>
+        © 2024-<span id="year"></span> Emmanuel Ochiba. Data Analyst &
+        Developer.
+      </p>
+
+      <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+      </script>
     </footer>
 
     <script>
