@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Ochiba Emmanuel</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* === THEME VARIABLES === */
+      :root {
+        --primary-color: #000000;
+        --accent-yellow: #ffd700;
+        --text-dark: #212529;
+        --text-muted: #6c757d;
+        --bg-color: #ffffff;
+        --card-border: #eaeaea;
+        --card-bg: #ffffff;
+      }
+
+      /* === RESET & BASE STYLES === */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* === NAVBAR (Matching Homepage) === */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 5%;
+        border-bottom: 2px solid var(--accent-yellow);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--primary-color);
+      }
+
+      .logo span {
+        color: var(--accent-yellow);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      nav ul li a:hover {
+        color: var(--accent-yellow);
+      }
+
+      /* === MAIN CONTENT === */
+      .page-header {
+        text-align: center;
+        padding: 4rem 1rem 2rem;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+
+      .underline {
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent-yellow);
+        margin: 0 auto;
+        border-radius: 2px;
+      }
+
+      /* === PROJECT GRID === */
+      .projects-container {
+        max-width: 1200px;
+        margin: 0 auto 5rem;
+        padding: 0 5%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      /* Responsive Grid: Switch to 2 columns on larger screens */
+      @media (min-width: 850px) {
+        .projects-container {
+          grid-template-columns: repeat(2, 1fr);
+          align-items: start;
+        }
+      }
+
+      /* === PROJECT CARD === */
+      .project-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Card Header (Always Visible) */
+      .card-summary {
+        padding: 2rem;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .card-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .card-summary h3 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-summary p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        padding-right: 2rem; /* Leave room for chevron */
+      }
+
+      .toggle-icon {
+        position: absolute;
+        right: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        transition: transform 0.3s ease;
+      }
+
+      /* Card Details (Collapsible Section) */
+      .card-details {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.5s ease,
+          padding 0.5s ease;
+        padding: 0 2rem; /* Initial hidden padding */
+        background-color: #fafafa;
+      }
+
+      /* When Expanded */
+      .project-card.expanded .card-details {
+        max-height: 2000px; /* Large enough to hold content */
+        padding: 2rem;
+        border-top: 1px solid var(--card-border);
+      }
+
+      .project-card.expanded .toggle-icon {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      /* Tags */
+      .tech-tags {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+
+      .tag {
+        background: #fffbe6;
+        color: #b8860b;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      /* Media Container (Images & Iframes) */
+      .media-container {
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--card-border);
+        background: white;
+      }
+
+      .media-container img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      /* Case Study Text */
+      .case-study ul {
+        padding-left: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: #444;
+        font-size: 0.9rem;
+      }
+
+      .case-study li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Buttons */
+      .card-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+      }
+
+      .btn-dark {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .btn-dark:hover {
+        background: #333;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--card-border);
+        color: var(--text-dark);
+      }
+
+      .btn-outline:hover {
+        background: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Ochiba <span>Emmanuel</span></div>
+      <nav>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li>
+            <a href="index.html#projects" style="color: var(--accent-yellow)"
+              >Projects</a
+            >
+          </li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="page-header">
+      <h1>Selected Projects</h1>
+      <div class="underline"></div>
+    </section>
+
+    <section class="projects-container">
+      <div class="project-card">
+        <div class="card-summary">
+          <i class="card-icon fas fa-chart-line"></i>
+          <h3>Price History Analysis</h3>
+          <p>
+            An interactive dashboard analyzing historical pricing trends and
+            fluctuations to determine the root cause of revenue drops.
+          </p>
+          <i class="toggle-icon fas fa-chevron-down"></i>
+        </div>
+
+        <div class="card-details">
+          <div class="tech-tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Data Engineering</span>
+          </div>
+
+          <div class="media-container">
+            <img src="sl_pr.png" alt="Price History Dashboard Screenshot" />
+          </div>
+
+          <div class="case-study">
+            <ul>
+              <li>
+                Engineered an ETL pipeline using MySQL to ingest and clean
+                300,000+ rows of raw ERP pricing data.
+              </li>
+              <li>
+                Developed a "Price Shock Index" using Tableau LOD calculations.
+              </li>
+              <li>
+                Successfully isolated the top 20% of inventory items driving
+                customer churn.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-actions">
+            <a
+              href="https://github.com/Nuelcompany24/Price_History"
+              target="_blank"
+              class="btn btn-dark"
+              ><i class="fab fa-github"></i> View Code</a
+            >
+            <a
+              href="https://public.tableau.com/views/Price_History/Sheet1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+              target="_blank"
+              class="btn btn-outline"
+              ><i class="fas fa-external-link-alt"></i> Live Dashboard</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-summary">
+          <i class="card-icon fas fa-shopping-cart"></i>
+          <h3>Plushco E-Commerce</h3>
+          <p>
+            A full-stack e-commerce platform for home interiors featuring
+            customized layouts and secure payment integrations.
+          </p>
+          <i class="toggle-icon fas fa-chevron-down"></i>
+        </div>
+
+        <div class="card-details">
+          <div class="tech-tags">
+            <span class="tag">PHP</span>
+            <span class="tag">Laravel</span>
+            <span class="tag">Bagisto</span>
+          </div>
+
+          <div class="media-container">
+            <img src="plush_scrn.png" alt="Plushco E-Commerce Website" />
+          </div>
+
+          <div class="case-study">
+            <ul>
+              <li>
+                Customized storefront management utilizing the Bagisto platform.
+              </li>
+              <li>
+                Configured secure SMTP, category hierarchies, and robust payment
+                gateways.
+              </li>
+              <li>
+                Implemented Cloudflare DNS management for enhanced security.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-actions">
+            <a
+              href="https://github.com/Nuelcompany24"
+              target="_blank"
+              class="btn btn-dark"
+              ><i class="fab fa-github"></i> View Code</a
+            >
+            <a
+              href="https://plushco.com.ng"
+              target="_blank"
+              class="btn btn-outline"
+              ><i class="fas fa-external-link-alt"></i> Visit Site</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-summary">
+          <i class="card-icon fas fa-database"></i>
+          <h3>Employee Layoffs Data Cleaning</h3>
+          <p>
+            Cleaned data sets of companies that laid off employees around the
+            world, from year 2020 to 2023.
+          </p>
+          <i class="toggle-icon fas fa-chevron-down"></i>
+        </div>
+
+        <div class="card-details">
+          <div class="tech-tags">
+            <span class="tag">SQL (MySQL)</span>
+            <span class="tag">Excel</span>
+          </div>
+
+          <div class="media-container">
+            <img src="layoffs.png" alt="Employee Layoffs Database Screenshot" />
+          </div>
+
+          <div class="case-study">
+            <ul>
+              <li>
+                Standardized inconsistent global employment records across
+                multiple formats.
+              </li>
+              <li>
+                Utilized advanced SQL queries to remove duplicates and handle
+                missing values.
+              </li>
+              <li>
+                Prepared structured data extracts for downstream reporting and
+                analytics.
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-actions">
+            <a
+              href="https://github.com/Nuelcompany24/Layoffs_data_cleaning_sql"
+              target="_blank"
+              class="btn btn-dark"
+              ><i class="fab fa-github"></i> View SQL Scripts</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const projectCards = document.querySelectorAll(".project-card");
+
+        projectCards.forEach((card) => {
+          const summary = card.querySelector(".card-summary");
+
+          summary.addEventListener("click", () => {
+            // Toggle the 'expanded' class on the clicked card
+            card.classList.toggle("expanded");
+
+            // Optional: If you want to close other cards when one opens, uncomment below:
+            /*
+                    projectCards.forEach(otherCard => {
+                        if(otherCard !== card) {
+                            otherCard.classList.remove('expanded');
+                        }
+                    });
+                    */
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

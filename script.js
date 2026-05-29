@@ -1,4 +1,61 @@
 <script>
+// 1. Define the Header Layout
+const globalHeader = `
+<header>
+    <div class="logo">Ochiba <span>Emmanuel</span></div>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link" data-page="index">About</a></li>
+            <li><a href="index.html#skills" class="nav-link" data-page="index">Skills</a></li>
+            <li><a href="projects.html" class="nav-link" data-page="projects">Projects</a></li>
+            <li><a href="index.html#contact" class="nav-link" data-page="index">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+`;
+
+// 2. Define the Footer Layout (Update this with your actual footer HTML)
+const globalFooter = `
+<footer style="text-align: center; padding: 2rem; border-top: 1px solid #eaeaea; margin-top: 3rem;">
+    <p style="font-weight: bold; color: #666;">© 2026 Ochiba Emmanuel. All rights reserved.</p>
+    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; font-size: 1.5rem;">
+        <a href="#" style="color: #000;"><i class="fab fa-linkedin"></i></a>
+        <a href="#" style="color: #000;"><i class="fab fa-github"></i></a>
+        <a href="#" style="color: #000;"><i class="fab fa-twitter"></i></a>
+    </div>
+</footer>
+`;
+
+// 3. Inject them into the page
+document.addEventListener("DOMContentLoaded", () => {
+    // Inject Header
+    const headerEl = document.getElementById("header-placeholder");
+    if (headerEl) {
+        headerEl.innerHTML = globalHeader;
+        
+        // Bonus: Automatically highlight the current active page in yellow
+        const currentPath = window.location.pathname;
+        const navLinks = headerEl.querySelectorAll(".nav-link");
+        
+        navLinks.forEach(link => {
+            // If the URL contains 'projects.html' and the link is the projects link
+            if (currentPath.includes("projects.html") && link.getAttribute("data-page") === "projects") {
+                link.style.color = "#FFD700"; 
+            }
+            // Or if we are on the homepage
+            else if (!currentPath.includes("projects.html") && link.getAttribute("data-page") === "index") {
+                // You can add logic here if you want 'About' highlighted on the homepage
+            }
+        });
+    }
+
+    // Inject Footer
+    const footerEl = document.getElementById("footer-placeholder");
+    if (footerEl) {
+        footerEl.innerHTML = globalFooter;
+    }
+});
+  
   document.addEventListener("DOMContentLoaded", function () {
     
     // 1. MOBILE NAVIGATION

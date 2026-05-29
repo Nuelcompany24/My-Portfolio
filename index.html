@@ -482,6 +482,45 @@
           text-align: center;
         }
       }
+      /* Container to center the button */
+      .view-more-container {
+        text-align: center;
+        margin-top: 3.5rem; /* Creates breathing room below the cards */
+        margin-bottom: 2rem;
+      }
+
+      /* The Button Styling */
+      .btn-view-more {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000000;
+        color: #ffffff;
+        padding: 14px 36px;
+        border-radius: 50px; /* Gives it that modern pill shape */
+        font-weight: 800;
+        font-size: 1.05rem;
+        text-decoration: none;
+        border: 2px solid #000000;
+        transition: all 0.3s ease;
+      }
+
+      .btn-view-more i {
+        margin-left: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      /* Hover Effect */
+      .btn-view-more:hover {
+        background-color: #ffffff;
+        color: #000000;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Make the arrow slide to the right on hover */
+      .btn-view-more:hover i {
+        transform: translateX(5px);
+      }
     </style>
 
     <script type="text/javascript">
@@ -693,6 +732,11 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="view-more-container">
+        <a href="projects.html" class="btn-view-more">
+          View All Projects <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </section>
 
